@@ -4,6 +4,8 @@
  */
 package mydragoncity;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Antonio
@@ -115,5 +117,11 @@ public class MyDragonCity {
         System.out.println(h1);
         System.out.println(h2);
         System.out.println(h3);
+        
+        System.out.println("Precio: " + h2.getPrecioCompra());
+        System.out.println("Experiencia: " + h2.getExperiencia());
+        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
+        System.out.println("Maximo de Dragones: " + h2.getMaxDragones());
+        System.out.println("Icono: " + h2.getIcono());      
     }
 }
