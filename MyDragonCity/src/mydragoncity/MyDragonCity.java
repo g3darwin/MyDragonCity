@@ -122,6 +122,20 @@ public class MyDragonCity {
         System.out.println("Experiencia: " + h2.getExperiencia());
         System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
         System.out.println("Maximo de Dragones: " + h2.getMaxDragones());
-        System.out.println("Icono: " + h2.getIcono());      
+        System.out.println("Icono: " + h2.getIcono());
+        
+        h2.setPrecioCompra(150);
+        System.out.println("Precio: " + h2.getPrecioCompra());
+        
+        h2.setExperiencia(200);
+        System.out.println("Experiencia: " + h2.getExperiencia());
+        
+        String[] tipos2 = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", 
+                            "Hielo", "Luz", "Oscuridad"};
+        
+        h2.setElementos(tipos2);
+        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
+        
+        System.out.println(h2);
     }
 }
