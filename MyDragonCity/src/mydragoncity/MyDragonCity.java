@@ -27,7 +27,6 @@ public class MyDragonCity {
         private String icono;
         
         
-        
         //Constructores
         
         public Habitats(int precioCompra, int experienciaObtenida, String[] tipoElementos, int maxDragones, String icono){
@@ -49,6 +48,58 @@ public class MyDragonCity {
             this.tipoElementos = otro.tipoElementos;
             this.maxDragones = otro.maxDragones;
             this.icono = otro.icono;
+        }
+        
+        //Getters y Setters
+        
+        public int getPrecioCompra(){
+            
+            return precioCompra;
+        }
+        
+        public int getExperiencia(){
+            
+            return experienciaObtenida;
+        }
+        
+        public String[] getElementos(){
+            
+            return tipoElementos;
+        }
+        
+        public int getMaxDragones(){
+            
+            return maxDragones;
+        }
+        
+        public String getIcono(){
+            
+            return icono;
+        }
+        
+        public void setPrecioCompra(int precio){
+            
+            this.precioCompra = precio;
+        }
+        
+        public void setExperiencia(int experiencia){
+            
+            this.experienciaObtenida = experiencia;
+        }
+        
+        public void setElementos(String[] elementos){
+        
+            this.tipoElementos = elementos;
+        }
+        
+        public void setMaxDragones(int maxDragones){
+            
+            this.maxDragones = maxDragones;
+        }
+        
+        public void setIcono(String Icono){
+        
+            this.icono = Icono;
         }
     }
     
