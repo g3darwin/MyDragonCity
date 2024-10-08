@@ -103,6 +103,19 @@ public class MyDragonCity {
         
             this.icono = Icono;
         }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Habitats{");
+            sb.append("precioCompra=").append(precioCompra);
+            sb.append(", experienciaObtenida=").append(experienciaObtenida);
+            sb.append(", tipoElementos=").append(Arrays.toString(tipoElementos));
+            sb.append(", maxDragones=").append(maxDragones);
+            sb.append(", icono=").append(icono);
+            sb.append('}');
+            return sb.toString();
+        }
     }
     
     public static void main(String[] args) {
