@@ -20,7 +20,7 @@ public class MyDragonCity {
         public static int EXP_OBTENIDA = 100;
         public static String[] TIPO_ELEMENTOS = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
         public static int MAX_DRAGONES = 2;
-        public static String ICONO = "";
+        public static String ICONO = "/img/habitat.png";
         
         private int precioCompra;
         private int experienciaObtenida;
@@ -41,16 +41,16 @@ public class MyDragonCity {
         }
         
         public Habitats(){
+            
+            this(0, 0, null, 0, null);
         }
         
         public Habitats(Habitats otro){
             
-            this.precioCompra = otro.precioCompra;
-            this.experienciaObtenida = otro.experienciaObtenida;
-            this.tipoElementos = otro.tipoElementos;
-            this.maxDragones = otro.maxDragones;
-            this.icono = otro.icono;
-        }
+            this(otro.precioCompra, otro.experienciaObtenida, 
+                    otro.tipoElementos, otro.maxDragones, otro.icono);
+            
+        }            
         
         //Getters y Setters
         
