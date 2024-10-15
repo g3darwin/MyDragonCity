@@ -118,6 +118,16 @@ public class MyDragonCity {
         }
     }
     
+    public enum TipoDragon{
+        
+        TIERRA,
+        FUEGO,
+        AGUA,
+        PLANTA,
+        ELECTRICIDAD,
+        HIELO
+    }
+    
     public static void main(String[] args) {
         
         MyDragonCity dragonCity = new MyDragonCity();
