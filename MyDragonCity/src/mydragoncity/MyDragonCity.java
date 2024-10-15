@@ -40,6 +40,7 @@ public class MyDragonCity {
         private int maxDragones;
         private String icono;
         private TipoDragon tipo;
+        private Dragon dragon;
         
         
         //-----------------------------------------------------------------
@@ -47,25 +48,28 @@ public class MyDragonCity {
         //-----------------------------------------------------------------
 
         public Habitats(int precioCompra, int experienciaObtenida, String[] tipoElementos,
-                            int maxDragones, String icono, TipoDragon tipo){
+                            int maxDragones, String icono, Dragon dragon, 
+                            TipoDragon tipo){
             
             this.precioCompra = precioCompra;
             this.experienciaObtenida = experienciaObtenida;
             this.tipoElementos = tipoElementos;
             this.maxDragones = maxDragones;
             this.icono = icono;
+            this.dragon = dragon;
             this.tipo = tipo;
         }
         
         public Habitats(){
             
-            this(0, 0, null, 0, null, null);
+            this(0, 0, null, 0, null, null, null);
         }
         
         public Habitats(Habitats otro){
             
             this(otro.precioCompra, otro.experienciaObtenida, 
-                    otro.tipoElementos, otro.maxDragones, otro.icono, otro.tipo);
+                    otro.tipoElementos, otro.maxDragones, otro.icono, otro.dragon,
+                    otro.tipo);
             
         }            
         
@@ -103,6 +107,11 @@ public class MyDragonCity {
             return tipo;
         }
         
+        public Dragon getDragon(){
+            
+            return dragon;
+        }
+        
         public void setPrecioCompra(int precio){
             
             this.precioCompra = precio;
@@ -128,6 +137,11 @@ public class MyDragonCity {
             this.icono = Icono;
         }
         
+        public void setDragon(Dragon dragon){
+            
+            this.dragon = dragon;
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
@@ -141,6 +155,7 @@ public class MyDragonCity {
             sb.append(", tipoElementos=").append(Arrays.toString(tipoElementos));
             sb.append(", maxDragones=").append(maxDragones);
             sb.append(", icono=").append(icono);
+            sb.append(", dragon=").append(dragon);
             sb.append(", tipo=").append(tipo);
             sb.append('}');
             return sb.toString();
@@ -323,38 +338,7 @@ public class MyDragonCity {
     public static void main(String[] args) {
         
         MyDragonCity dragonCity = new MyDragonCity();
-        String[] tipos = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
-        
-        Habitats h1 = dragonCity.new Habitats();
-        Habitats h2 = dragonCity.new Habitats(100, 100, tipos, 2, Habitats.ICONO, TipoDragon.TIERRA); //CAMBIAR TipoDragon
-        Habitats h3 = dragonCity.new Habitats(h1);
-        
-        System.out.println(h1);
-        System.out.println(h2);
-        System.out.println(h3);
-        
-        System.out.println("Precio: " + h2.getPrecioCompra());
-        System.out.println("Experiencia: " + h2.getExperiencia());
-        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
-        System.out.println("Maximo de Dragones: " + h2.getMaxDragones());
-        System.out.println("Icono: " + h2.getIcono());
-        System.out.println("Tipo de Habitat: " + h2.getTipo());
-        
-        h2.setPrecioCompra(150);
-        System.out.println("Precio: " + h2.getPrecioCompra());
-        
-        h2.setExperiencia(200);
-        System.out.println("Experiencia: " + h2.getExperiencia());
-        
-        String[] tipos2 = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", 
-                            "Hielo", "Luz", "Oscuridad"};
-        
-        h2.setElementos(tipos2);
-        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
-        
-        System.out.println(h2);
-        
-        
+
         Dragon d1 = dragonCity.new Dragon();
         Dragon d2 = dragonCity.new Dragon("Wallace", 1, 100, 190, 158, 35, 5, 
                                             "ICONO", TipoDragon.FUEGO);
@@ -384,5 +368,37 @@ public class MyDragonCity {
         
         System.out.println(" ");
         System.out.println(d2);
+        
+        
+        String[] tipos = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
+        
+        Habitats h1 = dragonCity.new Habitats();
+        Habitats h2 = dragonCity.new Habitats(100, 100, tipos, 2, Habitats.ICONO, d2, TipoDragon.TIERRA); //CAMBIAR TipoDragon
+        Habitats h3 = dragonCity.new Habitats(h1);
+        
+        System.out.println(h1);
+        System.out.println(h2);
+        System.out.println(h3);
+        
+        System.out.println("Precio: " + h2.getPrecioCompra());
+        System.out.println("Experiencia: " + h2.getExperiencia());
+        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
+        System.out.println("Maximo de Dragones: " + h2.getMaxDragones());
+        System.out.println("Icono: " + h2.getIcono());
+        System.out.println("Tipo de Habitat: " + h2.getTipo());
+        
+        h2.setPrecioCompra(150);
+        System.out.println("Precio: " + h2.getPrecioCompra());
+        
+        h2.setExperiencia(200);
+        System.out.println("Experiencia: " + h2.getExperiencia());
+        
+        String[] tipos2 = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", 
+                            "Hielo", "Luz", "Oscuridad"};
+        
+        h2.setElementos(tipos2);
+        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
+        
+        System.out.println(h2);
     }
 }
