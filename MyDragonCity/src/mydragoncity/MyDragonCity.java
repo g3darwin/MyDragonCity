@@ -12,9 +12,21 @@ import java.util.Arrays;
  */
 public class MyDragonCity {
     
+    public enum TipoDragon{
+        
+        TIERRA,
+        FUEGO,
+        AGUA,
+        PLANTA,
+        ELECTRICIDAD,
+        HIELO
+    }
+    
     public class Habitats{
         
-        //Atributos
+        //-----------------------------------------------------------------
+        // Atributos
+        //-----------------------------------------------------------------
         
         public static int PRECIO = 100;
         public static int EXP_OBTENIDA = 100;
@@ -27,33 +39,40 @@ public class MyDragonCity {
         private String[] tipoElementos;
         private int maxDragones;
         private String icono;
+        private TipoDragon tipo;
         
         
-        //Constructores
-        
-        public Habitats(int precioCompra, int experienciaObtenida, String[] tipoElementos, int maxDragones, String icono){
+        //-----------------------------------------------------------------
+        // Constructores
+        //-----------------------------------------------------------------
+
+        public Habitats(int precioCompra, int experienciaObtenida, String[] tipoElementos,
+                            int maxDragones, String icono, TipoDragon tipo){
             
             this.precioCompra = precioCompra;
             this.experienciaObtenida = experienciaObtenida;
             this.tipoElementos = tipoElementos;
             this.maxDragones = maxDragones;
             this.icono = icono;
+            this.tipo = tipo;
         }
         
         public Habitats(){
             
-            this(0, 0, null, 0, null);
+            this(0, 0, null, 0, null, null);
         }
         
         public Habitats(Habitats otro){
             
             this(otro.precioCompra, otro.experienciaObtenida, 
-                    otro.tipoElementos, otro.maxDragones, otro.icono);
+                    otro.tipoElementos, otro.maxDragones, otro.icono, otro.tipo);
             
         }            
         
-        //Getters y Setters
-        
+        //-----------------------------------------------------------------
+        // Getters & Setters
+        //-----------------------------------------------------------------
+
         public int getPrecioCompra(){
             
             return precioCompra;
@@ -77,6 +96,11 @@ public class MyDragonCity {
         public String getIcono(){
             
             return icono;
+        }
+        
+        public TipoDragon getTipo(){
+            
+            return tipo;
         }
         
         public void setPrecioCompra(int precio){
@@ -103,6 +127,10 @@ public class MyDragonCity {
         
             this.icono = Icono;
         }
+        
+        //-----------------------------------------------------------------
+        // Overriden
+        //-----------------------------------------------------------------
 
         @Override
         public String toString() {
@@ -113,28 +141,192 @@ public class MyDragonCity {
             sb.append(", tipoElementos=").append(Arrays.toString(tipoElementos));
             sb.append(", maxDragones=").append(maxDragones);
             sb.append(", icono=").append(icono);
+            sb.append(", tipo=").append(tipo);
             sb.append('}');
             return sb.toString();
         }
     }
     
-    public enum TipoDragon{
+    public class Dragon{
+
+        //-----------------------------------------------------------------
+        // Atributos
+        //-----------------------------------------------------------------
+
+        public static String NOMBRE = "Dave";
+        public static int NIVEL = 1;
+        public static int PRECIO = 100;
+        public static int VIDA = 190;
+        public static int DANIO = 158;
+        public static int VELOCIDAD = 35;
+        public static int COMIDA = 5;
+        public static String ICONO = "/img/dragon.png";
         
-        TIERRA,
-        FUEGO,
-        AGUA,
-        PLANTA,
-        ELECTRICIDAD,
-        HIELO
+        private String nombre;
+        private int nivel;
+        private int precio;
+        private int vida;
+        private int danio;
+        private int velocidad;
+        private int comida;
+        private String icono;
+        private TipoDragon tipo;
+        
+        
+        //-----------------------------------------------------------------
+        // Constructores
+        //-----------------------------------------------------------------
+
+        public Dragon(String nombre, int nivel, int precio, int vida, int danio, 
+                int velocidad, int comida, String icono, TipoDragon tipo){
+                        
+            
+            this.nombre = nombre;
+            this.nivel = nivel;
+            this.precio = precio;
+            this.vida = vida;
+            this.danio = danio;
+            this.velocidad = velocidad;
+            this.comida = comida;
+            this.icono = icono;
+            this.tipo = tipo;
+        }
+        
+        public Dragon(Dragon otro){
+            
+            this(otro.nombre, otro.nivel, otro.precio, otro.vida, otro.danio,
+                    otro.velocidad, otro.comida, otro.icono, otro.tipo);
+        }
+        
+        public Dragon(){
+            
+            this( "", 0, 0, 0, 0, 0, 0, "", null);
+        }
+        
+        //-----------------------------------------------------------------
+        // Getters & Setters
+        //-----------------------------------------------------------------
+        
+        public String getNombre(){
+            
+            return nombre;
+        }
+        
+        public int getNivel(){
+            
+            return nivel;
+        }
+        
+        public int getPrecio(){
+            
+            return precio;
+        }
+        
+        public int getVida(){
+            
+            return vida;
+        }
+        
+        public int getDanio(){
+            
+            return danio;
+        }
+        
+        public int getVelocidad(){
+            
+            return velocidad;
+        }
+        
+        public int getComida(){
+            
+            return comida;
+        }
+        
+        public String getIcono(){
+            
+            return icono;
+        }
+        
+        public TipoDragon getTipo(){
+            
+            return tipo;
+        }
+        
+         public void setNombre(String nombre){
+            
+            this.nombre = nombre;
+        }
+         
+         public void setNivel(int nivel){
+            
+            this.nivel = nivel;
+        }
+        
+        public void setPrecio(int precio){
+            
+            this.precio = precio;
+        }
+        
+        public void setVida(int vida){
+            
+            this.vida = vida;
+        }
+        
+        public void setDanio(int danio){
+            
+            this.danio = danio;
+        }
+        
+        public void setVelocidad(int velocidad){
+            
+            this.velocidad = velocidad;
+        }
+        
+        public void setComida(int comida){
+            
+            this.comida = comida;
+        }
+        
+        public void setIcono(String icono){
+            
+            this.icono = icono;
+        }
+        
+        public void setTipo(TipoDragon tipo){
+            
+            this.tipo = tipo;
+        }
+        
+        //-----------------------------------------------------------------
+        // Overriden
+        //-----------------------------------------------------------------
+        
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Dragon{");
+            sb.append("nombre=").append(nombre);
+            sb.append("nivel=").append(nivel);
+            sb.append("precio=").append(precio);
+            sb.append(", vida=").append(vida);
+            sb.append(", danio=").append(danio);
+            sb.append(", velocidad=").append(velocidad);
+            sb.append(", comida=").append(comida);
+            sb.append(", icono=").append(icono);
+            sb.append(", tipo=").append(tipo);
+            sb.append('}');
+            return sb.toString();
+        }
+        
     }
-    
+
     public static void main(String[] args) {
         
         MyDragonCity dragonCity = new MyDragonCity();
         String[] tipos = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
         
         Habitats h1 = dragonCity.new Habitats();
-        Habitats h2 = dragonCity.new Habitats(100, 100, tipos, 2, Habitats.ICONO);
+        Habitats h2 = dragonCity.new Habitats(100, 100, tipos, 2, Habitats.ICONO, TipoDragon.TIERRA); //CAMBIAR TipoDragon
         Habitats h3 = dragonCity.new Habitats(h1);
         
         System.out.println(h1);
