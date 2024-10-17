@@ -9,16 +9,6 @@ package mydragoncity;
  * @author Antonio
  */
 public class MyDragonCity {
-    
-    public enum TipoDragon{
-        
-        TIERRA,
-        FUEGO,
-        AGUA,
-        PLANTA,
-        ELECTRICIDAD,
-        HIELO
-    }
 
     public static void main(String[] args) {
 
@@ -52,6 +42,12 @@ public class MyDragonCity {
         System.out.println(" ");
         System.out.println(d2);
         
+        Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
+        
+        h2.aniadirDragon(d2);
+        
+        /*
+        
         Habitat h1 = new Habitat();
         Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
         Habitat h3 = new Habitat(h1);
@@ -73,5 +69,7 @@ public class MyDragonCity {
         System.out.println("Experiencia: " + h2.getExperiencia());
 
         System.out.println(h2);
+
+        */
     }
 }

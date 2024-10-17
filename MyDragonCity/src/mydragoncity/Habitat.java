@@ -4,6 +4,9 @@
  */
 package mydragoncity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Victus
@@ -23,8 +26,9 @@ public class Habitat{
         private int experienciaObtenida;
         private int maxDragones;
         private String icono;
-        private MyDragonCity.TipoDragon tipo;
+        private TipoDragon tipo;
         private Dragon dragon;
+        private List<Dragon> dragones;
         
         
         //-----------------------------------------------------------------
@@ -33,7 +37,7 @@ public class Habitat{
 
         public Habitat(int precioCompra, int experienciaObtenida,
                             int maxDragones, String icono, Dragon dragon, 
-                            MyDragonCity.TipoDragon tipo){
+                            TipoDragon tipo){
             
             this.precioCompra = precioCompra;
             this.experienciaObtenida = experienciaObtenida;
@@ -41,6 +45,7 @@ public class Habitat{
             this.icono = icono;
             this.dragon = dragon;
             this.tipo = tipo;
+            this.dragones = new ArrayList<>();
         }
         
         public Habitat(){
@@ -50,9 +55,9 @@ public class Habitat{
         
         public Habitat(Habitat otro){
             
-            this(otro.precioCompra, otro.experienciaObtenida,
-                    otro.maxDragones, otro.icono, otro.dragon,
-                    otro.tipo);
+            this(otro.precioCompra, otro.experienciaObtenida, 
+                    otro.maxDragones, otro.icono, 
+                    otro.dragon, otro.tipo);
             
         }            
         
@@ -80,7 +85,7 @@ public class Habitat{
             return icono;
         }
         
-        public MyDragonCity.TipoDragon getTipo(){
+        public TipoDragon getTipo(){
             
             return tipo;
         }
@@ -137,20 +142,19 @@ public class Habitat{
         // Metodos
         //-----------------------------------------------------------------
         
-        public void crearHabitat(){
-            
-            //cada habitat tiene un precio distinto
-            
-        }
-        
-        public void eliminarHabitat(){
-            
-            
-        }
-        
         public void aniadirDragon(Dragon dragon){
             
-            
+            if(dragones.size() < maxDragones){
+                
+                dragones.add(dragon);
+                
+                System.out.println("Dragon aniadido con exito");
+                
+            }else{
+                
+                System.out.println("No hay espacio en el habitat");
+                
+            }
         }
         
         public void moverDragon(Dragon dragon){

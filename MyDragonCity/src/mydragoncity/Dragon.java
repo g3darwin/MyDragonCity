@@ -31,7 +31,7 @@ public class Dragon{
         private int velocidad;
         private int comida;
         private String icono;
-        private MyDragonCity.TipoDragon tipo;
+        private TipoDragon tipo;
         
         
         //-----------------------------------------------------------------
@@ -39,7 +39,7 @@ public class Dragon{
         //-----------------------------------------------------------------
 
         public Dragon(String nombre, int nivel, int precio, int vida, int danio, 
-                int velocidad, int comida, String icono, MyDragonCity.TipoDragon tipo){
+                int velocidad, int comida, String icono, TipoDragon tipo){
                         
             
             this.nombre = nombre;
@@ -108,7 +108,7 @@ public class Dragon{
             return icono;
         }
         
-        public MyDragonCity.TipoDragon getTipo(){
+        public TipoDragon getTipo(){
             
             return tipo;
         }
@@ -153,7 +153,7 @@ public class Dragon{
             this.icono = icono;
         }
         
-        public void setTipo(MyDragonCity.TipoDragon tipo){
+        public void setTipo(TipoDragon tipo){
             
             this.tipo = tipo;
         }
