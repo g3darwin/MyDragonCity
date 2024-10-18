@@ -42,9 +42,44 @@ public class MyDragonCity {
         System.out.println(" ");
         System.out.println(d2);
         
-        Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
+        Habitat h1 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.FUEGO);
+        Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.TIERRA);
         
-        h2.aniadirDragon(d2);
+        h1.aniadirDragon(d2);
+      
+        h2.moverDragon(d2, h1, h2);
+        
+        d2.setTipo(TipoDragon.FUEGO);
+        System.out.println(d2);
+        
+        h1.aniadirDragon(d2);
+      
+        h2.moverDragon(d2, h1, h2);
+        
+        System.out.println(" ");
+        System.out.println(h1);
+        System.out.println(" ");
+        System.out.println(h2);
+        
+        Jugador j1 = new Jugador();
+        Jugador j2 = new Jugador("Player 2", 5, 10000, 5000);
+        Jugador j3 = new Jugador(j2);
+        
+        System.out.println(j1);
+        System.out.println(j2);
+        System.out.println(j3);
+        
+        System.out.println("Nombre: " + j2.getNombre());
+        System.out.println("Nivel: " + j2.getNivel());
+        System.out.println("Oro: " + j2.getOro());
+        System.out.println("Comida: " + j2.getComida());
+        
+        j2.mejorarHabitat(h2);
+        
+        System.out.println(" ");
+        System.out.println(h2);
+        System.out.println(" ");
+        System.out.println(j2);
         
         /*
         

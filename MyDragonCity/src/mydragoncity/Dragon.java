@@ -61,7 +61,8 @@ public class Dragon{
         
         public Dragon(){
             
-            this( "", 0, 0, 0, 0, 0, 0, "", null);
+            this( NOMBRE, NIVEL, PRECIO, VIDA, DANIO, 
+                    VELOCIDAD, COMIDA, ICONO, null);
         }
         
         //-----------------------------------------------------------------

@@ -27,7 +27,6 @@ public class Habitat{
         private int maxDragones;
         private String icono;
         private TipoDragon tipo;
-        private Dragon dragon;
         private List<Dragon> dragones;
         
         
@@ -36,28 +35,26 @@ public class Habitat{
         //-----------------------------------------------------------------
 
         public Habitat(int precioCompra, int experienciaObtenida,
-                            int maxDragones, String icono, Dragon dragon, 
+                            int maxDragones, String icono, 
                             TipoDragon tipo){
             
             this.precioCompra = precioCompra;
             this.experienciaObtenida = experienciaObtenida;
             this.maxDragones = maxDragones;
             this.icono = icono;
-            this.dragon = dragon;
             this.tipo = tipo;
             this.dragones = new ArrayList<>();
         }
         
         public Habitat(){
             
-            this(0, 0, 0, null, null, null);
+            this(PRECIO, EXP_OBTENIDA, MAX_DRAGONES, ICONO, null);
         }
         
         public Habitat(Habitat otro){
             
             this(otro.precioCompra, otro.experienciaObtenida, 
-                    otro.maxDragones, otro.icono, 
-                    otro.dragon, otro.tipo);
+                    otro.maxDragones, otro.icono, otro.tipo);
             
         }            
         
@@ -89,10 +86,10 @@ public class Habitat{
             
             return tipo;
         }
-        
-        public Dragon getDragon(){
+
+        public List<Dragon> getDragones(){
             
-            return dragon;
+            return dragones;
         }
         
         public void setPrecioCompra(int precio){
@@ -115,11 +112,6 @@ public class Habitat{
             this.icono = Icono;
         }
         
-        public void setDragon(Dragon dragon){
-            
-            this.dragon = dragon;
-        }
-        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
@@ -132,8 +124,8 @@ public class Habitat{
             sb.append(", experienciaObtenida=").append(experienciaObtenida);
             sb.append(", maxDragones=").append(maxDragones);
             sb.append(", icono=").append(icono);
-            sb.append(", dragon=").append(dragon);
             sb.append(", tipo=").append(tipo);
+            sb.append(", lista=").append(dragones);
             sb.append('}');
             return sb.toString();
         }
@@ -142,35 +134,33 @@ public class Habitat{
         // Metodos
         //-----------------------------------------------------------------
         
-        public void aniadirDragon(Dragon dragon){
+        public boolean aniadirDragon(Dragon dragon){
             
-            if(dragones.size() < maxDragones){
+            if(dragones.size() < maxDragones && tipo == dragon.getTipo()){
                 
                 dragones.add(dragon);
                 
-                System.out.println("Dragon aniadido con exito");
+                return true;
                 
             }else{
                 
-                System.out.println("No hay espacio en el habitat");
+                System.out.println("No ha sido posible, diferente tipo");
                 
+                return false;
             }
         }
         
-        public void moverDragon(Dragon dragon){
+        public void moverDragon(Dragon dragon, Habitat h1, Habitat h2){
             
-            
+            if(h2.dragones.size() < maxDragones && dragon.getTipo() == h2.tipo
+                     && !h1.dragones.isEmpty()){
+                
+                h1.dragones.remove(dragon);
+                h2.dragones.add(dragon);
+                
+            }else{
+                
+                System.out.println("No ha sido posible la accion");
+            }
         }
-        
-        public void moverHabitat(){
-            
-            
-        }
-        
-        public void mejorarHabitat(){
-        
-            //aumenta el max_dragones a 4, exp_obtenida = 2500 y vale la mejora 1200 de oro
-        }
-        
-        
     }
