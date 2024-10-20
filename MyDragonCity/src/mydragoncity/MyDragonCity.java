@@ -4,128 +4,88 @@
  */
 package mydragoncity;
 
-import java.util.Arrays;
-
 /**
  *
  * @author Antonio
  */
 public class MyDragonCity {
-    
-    public class Habitats{
-        
-        //Atributos
-        
-        public static int PRECIO = 100;
-        public static int EXP_OBTENIDA = 100;
-        public static String[] TIPO_ELEMENTOS = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
-        public static int MAX_DRAGONES = 2;
-        public static String ICONO = "/img/habitat.png";
-        
-        private int precioCompra;
-        private int experienciaObtenida;
-        private String[] tipoElementos;
-        private int maxDragones;
-        private String icono;
-        
-        
-        //Constructores
-        
-        public Habitats(int precioCompra, int experienciaObtenida, String[] tipoElementos, int maxDragones, String icono){
-            
-            this.precioCompra = precioCompra;
-            this.experienciaObtenida = experienciaObtenida;
-            this.tipoElementos = tipoElementos;
-            this.maxDragones = maxDragones;
-            this.icono = icono;
-        }
-        
-        public Habitats(){
-            
-            this(0, 0, null, 0, null);
-        }
-        
-        public Habitats(Habitats otro){
-            
-            this(otro.precioCompra, otro.experienciaObtenida, 
-                    otro.tipoElementos, otro.maxDragones, otro.icono);
-            
-        }            
-        
-        //Getters y Setters
-        
-        public int getPrecioCompra(){
-            
-            return precioCompra;
-        }
-        
-        public int getExperiencia(){
-            
-            return experienciaObtenida;
-        }
-        
-        public String[] getElementos(){
-            
-            return tipoElementos;
-        }
-        
-        public int getMaxDragones(){
-            
-            return maxDragones;
-        }
-        
-        public String getIcono(){
-            
-            return icono;
-        }
-        
-        public void setPrecioCompra(int precio){
-            
-            this.precioCompra = precio;
-        }
-        
-        public void setExperiencia(int experiencia){
-            
-            this.experienciaObtenida = experiencia;
-        }
-        
-        public void setElementos(String[] elementos){
-        
-            this.tipoElementos = elementos;
-        }
-        
-        public void setMaxDragones(int maxDragones){
-            
-            this.maxDragones = maxDragones;
-        }
-        
-        public void setIcono(String Icono){
-        
-            this.icono = Icono;
-        }
 
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Habitats{");
-            sb.append("precioCompra=").append(precioCompra);
-            sb.append(", experienciaObtenida=").append(experienciaObtenida);
-            sb.append(", tipoElementos=").append(Arrays.toString(tipoElementos));
-            sb.append(", maxDragones=").append(maxDragones);
-            sb.append(", icono=").append(icono);
-            sb.append('}');
-            return sb.toString();
-        }
-    }
-    
     public static void main(String[] args) {
+
+        Dragon d1 = new Dragon();
+        Dragon d2 = new Dragon("Wallace", 1, 100, 190, 158, 35, 5, 
+                                            "ICONO", TipoDragon.FUEGO);
+        Dragon d3 = new Dragon(d1);
         
-        MyDragonCity dragonCity = new MyDragonCity();
-        String[] tipos = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", "Hielo"};
+        System.out.println(d1);
+        System.out.println(d2);
+        System.out.println(d3);
         
-        Habitats h1 = dragonCity.new Habitats();
-        Habitats h2 = dragonCity.new Habitats(100, 100, tipos, 2, Habitats.ICONO);
-        Habitats h3 = dragonCity.new Habitats(h1);
+        System.out.println("Nombre: " + d2.getNombre());
+        System.out.println("Nivel: " + d2.getNivel());
+        System.out.println("Precio: " + d2.getPrecio());
+        System.out.println("Tipo: " + d2.getTipo());
+        System.out.println("Vida: " + d2.getVida());
+        System.out.println("Danio: " + d2.getDanio());
+        System.out.println("Velocidad: " + d2.getVelocidad());
+        System.out.println("Comida: " + d2.getComida());
+        System.out.println("Icono: " + d2.getIcono());
+        
+        String nombre = "Steve";
+        
+        d2.setNombre(nombre);
+        d2.setTipo(TipoDragon.TIERRA);
+        System.out.println(" ");
+        System.out.println("Nombre: " + d2.getNombre());
+        System.out.println("Tipo: " + d2.getTipo());
+        
+        System.out.println(" ");
+        System.out.println(d2);
+        
+        Habitat h1 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.FUEGO);
+        Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.TIERRA);
+        
+        h1.aniadirDragon(d2);
+      
+        h2.moverDragon(d2, h1, h2);
+        
+        d2.setTipo(TipoDragon.FUEGO);
+        System.out.println(d2);
+        
+        h1.aniadirDragon(d2);
+      
+        h2.moverDragon(d2, h1, h2);
+        
+        System.out.println(" ");
+        System.out.println(h1);
+        System.out.println(" ");
+        System.out.println(h2);
+        
+        Jugador j1 = new Jugador();
+        Jugador j2 = new Jugador("Player 2", 5, 10000, 5000);
+        Jugador j3 = new Jugador(j2);
+        
+        System.out.println(j1);
+        System.out.println(j2);
+        System.out.println(j3);
+        
+        System.out.println("Nombre: " + j2.getNombre());
+        System.out.println("Nivel: " + j2.getNivel());
+        System.out.println("Oro: " + j2.getOro());
+        System.out.println("Comida: " + j2.getComida());
+        
+        j2.mejorarHabitat(h2);
+        
+        System.out.println(" ");
+        System.out.println(h2);
+        System.out.println(" ");
+        System.out.println(j2);
+        
+        /*
+        
+        Habitat h1 = new Habitat();
+        Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
+        Habitat h3 = new Habitat(h1);
         
         System.out.println(h1);
         System.out.println(h2);
@@ -133,22 +93,18 @@ public class MyDragonCity {
         
         System.out.println("Precio: " + h2.getPrecioCompra());
         System.out.println("Experiencia: " + h2.getExperiencia());
-        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
         System.out.println("Maximo de Dragones: " + h2.getMaxDragones());
         System.out.println("Icono: " + h2.getIcono());
+        System.out.println("Tipo de Habitat: " + h2.getTipo());
         
         h2.setPrecioCompra(150);
         System.out.println("Precio: " + h2.getPrecioCompra());
         
         h2.setExperiencia(200);
         System.out.println("Experiencia: " + h2.getExperiencia());
-        
-        String[] tipos2 = {"Tierra", "Fuego", "Agua", "Planta", "Electricidad", 
-                            "Hielo", "Luz", "Oscuridad"};
-        
-        h2.setElementos(tipos2);
-        System.out.println("Tipos de Elementos: " + Arrays.toString(h2.getElementos()));
-        
+
         System.out.println(h2);
+
+        */
     }
 }
