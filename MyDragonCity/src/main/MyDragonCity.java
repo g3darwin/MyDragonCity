@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package mydragoncity;
+package main;
+
+import model.Dragon;
+import model.Habitat;
+import model.Jugador;
+import model.TipoDragon;
+import view.MainView;
 
 /**
  *
@@ -11,63 +17,43 @@ package mydragoncity;
 public class MyDragonCity {
 
     public static void main(String[] args) {
-
-        Dragon d1 = new Dragon();
-        Dragon d2 = new Dragon("Wallace", 1, 100, 190, 158, 35, 5, 
-                                            "ICONO", TipoDragon.FUEGO);
-        Dragon d3 = new Dragon(d1);
         
-        System.out.println(d1);
-        System.out.println(d2);
-        System.out.println(d3);
-        
-        System.out.println("Nombre: " + d2.getNombre());
-        System.out.println("Nivel: " + d2.getNivel());
-        System.out.println("Precio: " + d2.getPrecio());
-        System.out.println("Tipo: " + d2.getTipo());
-        System.out.println("Vida: " + d2.getVida());
-        System.out.println("Danio: " + d2.getDanio());
-        System.out.println("Velocidad: " + d2.getVelocidad());
-        System.out.println("Comida: " + d2.getComida());
-        System.out.println("Icono: " + d2.getIcono());
-        
-        String nombre = "Steve";
-        
-        d2.setNombre(nombre);
-        d2.setTipo(TipoDragon.TIERRA);
-        System.out.println(" ");
-        System.out.println("Nombre: " + d2.getNombre());
-        System.out.println("Tipo: " + d2.getTipo());
-        
-        System.out.println(" ");
-        System.out.println(d2);
+        Dragon d1 = new Dragon("Steve", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon tierra bebe.png",
+                                            TipoDragon.TIERRA, null);
+        Dragon d2 = new Dragon("Loche", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon_fuego.png",
+                                            TipoDragon.FUEGO, null);
+        Dragon d3 = new Dragon("Dave", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Bebe-dragon-barro.png",
+                                            TipoDragon.TIERRA, null);
+        Dragon d4 = new Dragon("Bitz", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Flaming_Rock_Dragon.png",
+                                            TipoDragon.FUEGO, null);
         
         Habitat h1 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.FUEGO);
         Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, TipoDragon.TIERRA);
         
         h1.aniadirDragon(d2);
-      
-        h2.moverDragon(d2, h1, h2);
-        
-        d2.setTipo(TipoDragon.FUEGO);
-        System.out.println(d2);
-        
-        h1.aniadirDragon(d2);
-      
-        h2.moverDragon(d2, h1, h2);
-        
+        h1.aniadirDragon(d4);
+        h2.aniadirDragon(d1);
+        h2.aniadirDragon(d3);
+       
         System.out.println(" ");
         System.out.println(h1);
         System.out.println(" ");
         System.out.println(h2);
         
         Jugador j1 = new Jugador();
-        Jugador j2 = new Jugador("Player 2", 5, 10000, 5000);
+        Jugador j2 = new Jugador("Player 2", 5, 0, 10000, 5000);
         Jugador j3 = new Jugador(j2);
         
+        System.out.println(" ");
         System.out.println(j1);
         System.out.println(j2);
         System.out.println(j3);
+        
+        /*
         
         System.out.println("Nombre: " + j2.getNombre());
         System.out.println("Nivel: " + j2.getNivel());
@@ -81,6 +67,7 @@ public class MyDragonCity {
         System.out.println(" ");
         System.out.println(j2);
         
+        */
         /*
         
         Habitat h1 = new Habitat();
@@ -106,5 +93,8 @@ public class MyDragonCity {
         System.out.println(h2);
 
         */
+        
+        MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
+        pantalla.setVisible(true);
     }
 }
