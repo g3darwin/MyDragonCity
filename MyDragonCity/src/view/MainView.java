@@ -6,14 +6,11 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import model.Dragon;
-import model.Habitat;
 import model.Jugador;
-import model.TipoDragon;
 
 /**
  *
@@ -24,9 +21,7 @@ public class MainView extends javax.swing.JFrame {
     private List<Dragon> dragonesTierra;
     private List<Dragon> dragonesFuego;
     private Jugador jugador; 
-    private Thread experiencia;
     
-    ArrayList infoJugador = new ArrayList();
     DefaultListModel modelo = new DefaultListModel();
     
     public MainView(List<Dragon> dragonesTierra, List<Dragon> dragonesFuego) {
