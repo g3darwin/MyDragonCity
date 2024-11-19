@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mydragoncity;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +112,11 @@ public class Habitat{
             this.icono = Icono;
         }
         
+        public void addDragon(Dragon dragon){
+            
+            this.dragones.add(dragon);
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
@@ -137,8 +142,12 @@ public class Habitat{
         public boolean aniadirDragon(Dragon dragon){
             
             if(dragones.size() < maxDragones && tipo == dragon.getTipo()){
-                
+               
+                TipoDragon habitat = dragon.getTipo();
                 dragones.add(dragon);
+                dragon.setHabitat(habitat);
+                
+                System.out.println("Dragon "+dragon.getNombre()+" añadido");
                 
                 return true;
                 
@@ -152,11 +161,24 @@ public class Habitat{
         
         public void moverDragon(Dragon dragon, Habitat h1, Habitat h2){
             
+            TipoDragon tipo = null;
+            TipoDragon habitat;
+            
             if(h2.dragones.size() < maxDragones && dragon.getTipo() == h2.tipo
                      && !h1.dragones.isEmpty()){
                 
                 h1.dragones.remove(dragon);
                 h2.dragones.add(dragon);
+                
+                if(h2.getTipo() == tipo.FUEGO){
+                    habitat = tipo.FUEGO;
+                    dragon.setHabitat(habitat);
+                }else if(h2.getTipo() == tipo.TIERRA){
+                    habitat = tipo.TIERRA;
+                    dragon.setHabitat(habitat);
+                }
+                
+                System.out.println("Dragon "+dragon.getNombre()+" transladado con exito");
                 
             }else{
                 

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mydragoncity;
+package model;
 
 /**
  *
@@ -17,11 +17,14 @@ public class Jugador {
     
     public static String NOMBRE = "";
     public static int NIVEL = 1;
+    public static int EXPERIENCIA = 0;
     public static int ORO = 1000;
     public static int COMIDA = 200;
     
     private String nombre;
     private int nivel;
+    private int experiencia;
+    private int max_experiencia = 500;
     private int oro;
     private int comida;
     
@@ -29,10 +32,11 @@ public class Jugador {
     // Constructores
     //-----------------------------------------------------------------
     
-    public Jugador(String nombre, int nivel, int oro, int comida){
+    public Jugador(String nombre, int nivel, int experiencia, int oro, int comida){
         
         this.nombre = nombre;
         this.nivel = nivel;
+        this.experiencia = experiencia;
         this.oro = oro;
         this.comida = comida;
         
@@ -40,12 +44,12 @@ public class Jugador {
     
     public Jugador(Jugador otro){
         
-        this(otro.nombre, otro.nivel, otro.oro, otro.comida);
+        this(otro.nombre, otro.nivel, otro.experiencia, otro.oro, otro.comida);
     }
     
     public Jugador(){
         
-        this(NOMBRE, NIVEL, ORO, COMIDA);
+        this(NOMBRE, NIVEL, EXPERIENCIA, ORO, COMIDA);
     }
     
     //-----------------------------------------------------------------
@@ -60,6 +64,16 @@ public class Jugador {
     public int getNivel(){
         
         return nivel;
+    }
+    
+    public int getExperiencia(){
+        
+        return experiencia;
+    }
+    
+    public int getMaxExperiencia(){
+        
+        return max_experiencia;
     }
     
     public int getOro(){
@@ -80,6 +94,11 @@ public class Jugador {
     public void setNivel(int nivel){
         
         this.nivel = nivel;
+    }
+    
+    public void setExperiencia(int experiencia){
+        
+        this.experiencia = experiencia;
     }
     
     public void setOro(int oro){
@@ -133,11 +152,30 @@ public class Jugador {
                 int exp_obtenida = 2500;
                 
                 h1.setMaxDragones(max_dragones); 
-                h1.setExperiencia(exp_obtenida);
+                
+                subirExp(exp_obtenida);
                 
                 return true;
             }
             
             return false;
+    }
+    
+    public void subirExp(int incremento){
+        
+        experiencia += incremento;
+        subirNivel();
+    }
+    
+    public void subirNivel(){
+        
+        while(experiencia >= max_experiencia){
+            
+            nivel += 1;
+            experiencia -= max_experiencia;
+            max_experiencia += 250;
+            
+            System.out.println("\nHas subido de Nivel. Eres nivel "+nivel);
         }
+    }
 }

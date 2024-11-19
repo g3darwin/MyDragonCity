@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mydragoncity;
+package model;
 
 /**
  *
@@ -32,6 +32,7 @@ public class Dragon{
         private int comida;
         private String icono;
         private TipoDragon tipo;
+        private TipoDragon habitat;
         
         
         //-----------------------------------------------------------------
@@ -39,7 +40,7 @@ public class Dragon{
         //-----------------------------------------------------------------
 
         public Dragon(String nombre, int nivel, int precio, int vida, int danio, 
-                int velocidad, int comida, String icono, TipoDragon tipo){
+                int velocidad, int comida, String icono, TipoDragon tipo, TipoDragon habitat){
                         
             
             this.nombre = nombre;
@@ -51,18 +52,19 @@ public class Dragon{
             this.comida = comida;
             this.icono = icono;
             this.tipo = tipo;
+            this.habitat = habitat;
         }
         
         public Dragon(Dragon otro){
             
             this(otro.nombre, otro.nivel, otro.precio, otro.vida, otro.danio,
-                    otro.velocidad, otro.comida, otro.icono, otro.tipo);
+                    otro.velocidad, otro.comida, otro.icono, otro.tipo, otro.habitat);
         }
         
         public Dragon(){
             
             this( NOMBRE, NIVEL, PRECIO, VIDA, DANIO, 
-                    VELOCIDAD, COMIDA, ICONO, null);
+                    VELOCIDAD, COMIDA, ICONO, null, null);
         }
         
         //-----------------------------------------------------------------
@@ -114,6 +116,11 @@ public class Dragon{
             return tipo;
         }
         
+        public TipoDragon getHabitat(){
+            
+            return habitat;
+        }
+        
          public void setNombre(String nombre){
             
             this.nombre = nombre;
@@ -159,6 +166,11 @@ public class Dragon{
             this.tipo = tipo;
         }
         
+        public void setHabitat(TipoDragon habitat){
+            
+            this.habitat = habitat;
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
@@ -176,6 +188,7 @@ public class Dragon{
             sb.append(", comida=").append(comida);
             sb.append(", icono=").append(icono);
             sb.append(", tipo=").append(tipo);
+            sb.append(", habitat=").append(habitat);
             sb.append('}');
             return sb.toString();
         }
