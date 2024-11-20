@@ -11,7 +11,6 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import model.Dragon;
-import model.Habitat;
 import model.Jugador;
 import model.TipoDragon;
 
@@ -24,9 +23,7 @@ public class MainView extends javax.swing.JFrame {
     private List<Dragon> dragonesTierra;
     private List<Dragon> dragonesFuego;
     private Jugador jugador; 
-    private Thread experiencia;
     
-    ArrayList infoJugador = new ArrayList();
     DefaultListModel modelo = new DefaultListModel();
     
     public MainView(List<Dragon> dragonesTierra, List<Dragon> dragonesFuego) {
@@ -45,13 +42,12 @@ public class MainView extends javax.swing.JFrame {
         DragonTierra2.setVisible(false);
         DragonFuego1.setVisible(false);
         DragonFuego2.setVisible(false);
-        jScrollPane2.setVisible(false);
+        jScrollPane1.setVisible(false);
         jList1.setVisible(false);
         DragonesF.setVisible(false);
         AplicarF.setVisible(false);
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,12 +58,12 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         Pantalla = new javax.swing.JPanel();
-        DragonesT = new javax.swing.JComboBox<>();
-        AplicarT = new javax.swing.JButton();
         DragonTierra1 = new javax.swing.JLabel();
         DragonTierra2 = new javax.swing.JLabel();
         MejoraHabitatT = new javax.swing.JButton();
         HabitatTierra = new javax.swing.JButton();
+        DragonesT = new javax.swing.JComboBox<>();
+        AplicarT = new javax.swing.JButton();
         DragonesF = new javax.swing.JComboBox<>();
         AplicarF = new javax.swing.JButton();
         DragonFuego1 = new javax.swing.JLabel();
@@ -76,94 +72,66 @@ public class MainView extends javax.swing.JFrame {
         HabitatFuego = new javax.swing.JButton();
         Jugador = new javax.swing.JButton();
         BarraNivel = new javax.swing.JProgressBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Pantalla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Pantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(Pantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(1123, 0, -1, -1));
 
-        DragonesT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        DragonesT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Steve", "Dave", " " }));
-        DragonesT.addActionListener(new java.awt.event.ActionListener() {
+        DragonTierra1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Dragon tierra bebe.png"))); // NOI18N
+        getContentPane().add(DragonTierra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
+
+        DragonTierra2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Bebe-dragon-barro.png"))); // NOI18N
+        getContentPane().add(DragonTierra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
+
+        MejoraHabitatT.setBackground(new java.awt.Color(0, 153, 51));
+        MejoraHabitatT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/mejora.png"))); // NOI18N
+        getContentPane().add(MejoraHabitatT, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 30, 30));
+
+        HabitatTierra.setBackground(new java.awt.Color(0, 153, 51));
+        HabitatTierra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/habitat_arena.png"))); // NOI18N
+        HabitatTierra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DragonesTActionPerformed(evt);
+                HabitatTierraActionPerformed(evt);
             }
         });
-        Pantalla.add(DragonesT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 100, -1));
+        getContentPane().add(HabitatTierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 100, 90));
 
-        AplicarT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DragonesT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Steve", "Dave" }));
+        getContentPane().add(DragonesT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 100, -1));
+
         AplicarT.setText("Aplicar");
         AplicarT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AplicarTActionPerformed(evt);
             }
         });
-        Pantalla.add(AplicarT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, 20));
+        getContentPane().add(AplicarT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, 20));
 
-        DragonTierra1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Dragon tierra bebe.png"))); // NOI18N
-        Pantalla.add(DragonTierra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 30, 30));
+        DragonesF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loche", "Bitz" }));
+        getContentPane().add(DragonesF, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 100, -1));
 
-        DragonTierra2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Bebe-dragon-barro.png"))); // NOI18N
-        Pantalla.add(DragonTierra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 30, 30));
-
-        MejoraHabitatT.setBackground(new java.awt.Color(0, 153, 51));
-        MejoraHabitatT.setForeground(new java.awt.Color(0, 204, 0));
-        MejoraHabitatT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/mejora.png"))); // NOI18N
-        MejoraHabitatT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MejoraHabitatTActionPerformed(evt);
-            }
-        });
-        Pantalla.add(MejoraHabitatT, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 30, 30));
-
-        HabitatTierra.setBackground(new java.awt.Color(0, 153, 51));
-        HabitatTierra.setForeground(new java.awt.Color(0, 153, 51));
-        HabitatTierra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/habitat_arena.png"))); // NOI18N
-        HabitatTierra.setText("BotonDragon");
-        HabitatTierra.setToolTipText("");
-        HabitatTierra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HabitatTierraActionPerformed(evt);
-            }
-        });
-        Pantalla.add(HabitatTierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 100, 80));
-
-        DragonesF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        DragonesF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loche", " " }));
-        DragonesF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DragonesFActionPerformed(evt);
-            }
-        });
-        Pantalla.add(DragonesF, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 100, 20));
-
-        AplicarF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         AplicarF.setText("Aplicar");
         AplicarF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AplicarFActionPerformed(evt);
             }
         });
-        Pantalla.add(AplicarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, 20));
+        getContentPane().add(AplicarF, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
 
         DragonFuego1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Dragon_fuego.png"))); // NOI18N
-        Pantalla.add(DragonFuego1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 30, 30));
+        getContentPane().add(DragonFuego1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
 
         DragonFuego2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dragones/Flaming_Rock_Dragon.png"))); // NOI18N
-        Pantalla.add(DragonFuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 30, 30));
+        getContentPane().add(DragonFuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 30, -1));
 
         MejoraHabitatF.setBackground(new java.awt.Color(0, 153, 51));
-        MejoraHabitatF.setForeground(new java.awt.Color(0, 204, 0));
         MejoraHabitatF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/mejora.png"))); // NOI18N
-        MejoraHabitatF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MejoraHabitatFActionPerformed(evt);
-            }
-        });
-        Pantalla.add(MejoraHabitatF, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 30, 30));
+        getContentPane().add(MejoraHabitatF, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 30, 30));
 
         HabitatFuego.setBackground(new java.awt.Color(0, 153, 51));
         HabitatFuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/habitat_fuego.png"))); // NOI18N
@@ -172,7 +140,7 @@ public class MainView extends javax.swing.JFrame {
                 HabitatFuegoActionPerformed(evt);
             }
         });
-        Pantalla.add(HabitatFuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 100, 70));
+        getContentPane().add(HabitatFuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 110, 70));
 
         Jugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/estrella_dc.png"))); // NOI18N
         Jugador.addActionListener(new java.awt.event.ActionListener() {
@@ -180,34 +148,19 @@ public class MainView extends javax.swing.JFrame {
                 JugadorActionPerformed(evt);
             }
         });
-        Pantalla.add(Jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, 70));
+        getContentPane().add(Jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, 70));
+        getContentPane().add(BarraNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 70, 20));
 
-        BarraNivel.setForeground(new java.awt.Color(0, 204, 255));
-        Pantalla.add(BarraNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 70, 20));
+        jScrollPane1.setViewportView(jList1);
 
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jScrollPane2.setViewportView(jList1);
-
-        Pantalla.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, 80));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, 90));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/fondo.png"))); // NOI18N
-        Pantalla.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 490));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pantalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 492));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void initJugador(){
         
         jugador = new Jugador("Player 2", 1, 0, 10000, 5000);
@@ -243,14 +196,20 @@ public class MainView extends javax.swing.JFrame {
         modelo.addElement("Comida: " + jugador.getComida());
 
         // Mostrar la lista
-        jScrollPane2.setVisible(true);
+        jScrollPane1.setVisible(true);
 
         // Crear un temporizador para ocultar la lista después de 5 segundos
-        Timer timer = new Timer(5000, evt -> jScrollPane2.setVisible(false));
+        Timer timer = new Timer(5000, evt -> jScrollPane1.setVisible(false));
         timer.setRepeats(false); // Solo ejecuta una vez
         timer.start();
 }
     
+    private void JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugadorActionPerformed
+        jScrollPane1.setVisible(true);
+        jList1.setVisible(true);
+        mostrarInfoJugador();
+    }//GEN-LAST:event_JugadorActionPerformed
+
     private void HabitatTierraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HabitatTierraActionPerformed
         llenarComboBoxConDragonesT(dragonesTierra);
         DragonesT.setVisible(true);
@@ -268,58 +227,6 @@ public class MainView extends javax.swing.JFrame {
         timer.setRepeats(false);
         timer.start();
     }//GEN-LAST:event_HabitatTierraActionPerformed
-
-    private void DragonesTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DragonesTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DragonesTActionPerformed
-
-    private void AplicarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarTActionPerformed
-        String dragon = DragonesT.getSelectedItem().toString();
-        System.out.println("Dragon: " + dragon);
-        
-        if("Dave".equals(dragon)){
-            
-            DragonTierra1.setVisible(true);
-            DragonTierra2.setVisible(false);
-            
-        }else if("Steve".equals(dragon)){
-            
-            DragonTierra1.setVisible(false);
-            DragonTierra2.setVisible(true);
-        }
-        
-    }//GEN-LAST:event_AplicarTActionPerformed
-
-    private void JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugadorActionPerformed
-        jScrollPane2.setVisible(true);
-        jList1.setVisible(true);
-        mostrarInfoJugador();
-    }//GEN-LAST:event_JugadorActionPerformed
-
-    private void MejoraHabitatTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MejoraHabitatTActionPerformed
-        // TODO add your handling code here:     
-    }//GEN-LAST:event_MejoraHabitatTActionPerformed
-
-    private void MejoraHabitatFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MejoraHabitatFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MejoraHabitatFActionPerformed
-
-    private void DragonesFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DragonesFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DragonesFActionPerformed
-
-    private void AplicarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarFActionPerformed
-        String dragon = DragonesF.getSelectedItem().toString();
-        System.out.println("Dragon: " + dragon);
-        
-        if("Loche".equals(dragon)){
-            DragonFuego1.setVisible(true);
-            DragonFuego2.setVisible(false);
-        }else if("Bitz".equals(dragon)){
-            DragonFuego1.setVisible(false);
-            DragonFuego2.setVisible(true);
-        }
-    }//GEN-LAST:event_AplicarFActionPerformed
 
     private void HabitatFuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HabitatFuegoActionPerformed
         llenarComboBoxConDragonesF(dragonesFuego);
@@ -339,6 +246,86 @@ public class MainView extends javax.swing.JFrame {
         timer.start();
     }//GEN-LAST:event_HabitatFuegoActionPerformed
 
+    private void AplicarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarTActionPerformed
+        String dragon = DragonesT.getSelectedItem().toString();
+        System.out.println("Dragon Tierra: " + dragon);
+        
+        if("Dave".equals(dragon)){
+            
+            DragonTierra1.setVisible(true);
+            DragonTierra2.setVisible(false);
+            
+        }else if("Steve".equals(dragon)){
+            
+            DragonTierra1.setVisible(false);
+            DragonTierra2.setVisible(true);
+        }
+    }//GEN-LAST:event_AplicarTActionPerformed
+
+    private void AplicarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarFActionPerformed
+        String dragon = DragonesF.getSelectedItem().toString();
+        System.out.println("Dragon Fuego: " + dragon);
+        
+        if("Loche".equals(dragon)){
+            DragonFuego1.setVisible(true);
+            DragonFuego2.setVisible(false);
+        }else if("Bitz".equals(dragon)){
+            DragonFuego1.setVisible(false);
+            DragonFuego2.setVisible(true);
+        }
+    }//GEN-LAST:event_AplicarFActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                
+                List<Dragon> dragonesTierra = new ArrayList<>(); 
+                List<Dragon> dragonesFuego = new ArrayList<>();
+                
+                dragonesTierra.add(new Dragon("Steve", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon tierra bebe.png",
+                                            TipoDragon.TIERRA, null)); 
+                dragonesTierra.add(new Dragon("Dave", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Bebe-dragon-barro.png",
+                                            TipoDragon.TIERRA, null)); 
+                dragonesFuego.add(new Dragon("Loche", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon_fuego.png",
+                                            TipoDragon.FUEGO, null)); 
+                dragonesFuego.add(new Dragon("Bitz", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Flaming_Rock_Dragon.png",
+                                            TipoDragon.FUEGO, null));
+               
+                new MainView(dragonesTierra, dragonesFuego).setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AplicarF;
@@ -358,7 +345,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton MejoraHabitatT;
     private javax.swing.JPanel Pantalla;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
 }
