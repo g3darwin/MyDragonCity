@@ -6,11 +6,13 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.Timer;
 import model.Dragon;
 import model.Jugador;
+import model.TipoDragon;
 
 /**
  *
@@ -45,11 +47,7 @@ public class MainView extends javax.swing.JFrame {
         DragonesF.setVisible(false);
         AplicarF.setVisible(false);
     }
-
-    private MainView() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,6 +101,7 @@ public class MainView extends javax.swing.JFrame {
         });
         getContentPane().add(HabitatTierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 100, 90));
 
+        DragonesT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Steve", "Dave" }));
         getContentPane().add(DragonesT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 100, -1));
 
         AplicarT.setText("Aplicar");
@@ -113,7 +112,7 @@ public class MainView extends javax.swing.JFrame {
         });
         getContentPane().add(AplicarT, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, 20));
 
-        DragonesF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        DragonesF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loche", "Bitz" }));
         getContentPane().add(DragonesF, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 100, -1));
 
         AplicarF.setText("Aplicar");
@@ -154,7 +153,7 @@ public class MainView extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jList1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, 80));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, 90));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/utilidades/fondo.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 492));
@@ -249,7 +248,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void AplicarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarTActionPerformed
         String dragon = DragonesT.getSelectedItem().toString();
-        System.out.println("Dragon: " + dragon);
+        System.out.println("Dragon Tierra: " + dragon);
         
         if("Dave".equals(dragon)){
             
@@ -265,7 +264,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void AplicarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarFActionPerformed
         String dragon = DragonesF.getSelectedItem().toString();
-        System.out.println("Dragon: " + dragon);
+        System.out.println("Dragon Fuego: " + dragon);
         
         if("Loche".equals(dragon)){
             DragonFuego1.setVisible(true);
@@ -306,7 +305,24 @@ public class MainView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainView().setVisible(true);
+                
+                List<Dragon> dragonesTierra = new ArrayList<>(); 
+                List<Dragon> dragonesFuego = new ArrayList<>();
+                
+                dragonesTierra.add(new Dragon("Steve", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon tierra bebe.png",
+                                            TipoDragon.TIERRA, null)); 
+                dragonesTierra.add(new Dragon("Dave", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Bebe-dragon-barro.png",
+                                            TipoDragon.TIERRA, null)); 
+                dragonesFuego.add(new Dragon("Loche", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Dragon_fuego.png",
+                                            TipoDragon.FUEGO, null)); 
+                dragonesFuego.add(new Dragon("Bitz", 1, 100, 190, 158, 35, 5, 
+                                            "/img/dragones/Flaming_Rock_Dragon.png",
+                                            TipoDragon.FUEGO, null));
+               
+                new MainView(dragonesTierra, dragonesFuego).setVisible(true);
             }
         });
     }
