@@ -18,16 +18,16 @@ public class MyDragonCity {
 
     public static void main(String[] args) {
         
-        Dragon d1 = new Dragon("Steve", 5, 100, 190, 158, 35, 5, 
+        Dragon d1 = new Dragon("Steve", 5, 100, 1000, 158, 35, 5, 
                                             "/img/dragones/Dragon tierra bebe.png",
                                             TipoDragon.TIERRA, null);
-        Dragon d2 = new Dragon("Loche", 10, 100, 190, 158, 35, 5, 
+        Dragon d2 = new Dragon("Loche", 10, 100, 500, 158, 35, 5, 
                                             "/img/dragones/Dragon_fuego.png",
                                             TipoDragon.FUEGO, null);
-        Dragon d3 = new Dragon("Dave", 6, 100, 190, 158, 35, 5, 
+        Dragon d3 = new Dragon("Dave", 6, 100, 120, 158, 35, 5, 
                                             "/img/dragones/Bebe-dragon-barro.png",
                                             TipoDragon.TIERRA, null);
-        Dragon d4 = new Dragon("Bitz", 8, 100, 190, 158, 35, 5, 
+        Dragon d4 = new Dragon("Bitz", 8, 100, 480, 158, 35, 5, 
                                             "/img/dragones/Flaming_Rock_Dragon.png",
                                             TipoDragon.FUEGO, null);
         
@@ -97,7 +97,9 @@ public class MyDragonCity {
         System.out.println(" ");
         System.out.println(h1.getMejorDragon());
         System.out.println(" ");
-        System.out.println();
+        System.out.println(h1.getDragonesMayorVida());
+        System.out.println(" ");
+        System.out.println(h2.getDragonesMayorVida());
         
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
         pantalla.setVisible(true);

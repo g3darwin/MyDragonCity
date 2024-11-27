@@ -136,6 +136,24 @@ public class Habitat{
             return mejorDragon;
         }
         
+        public List<Dragon> getDragonesMayorVida(){
+            
+            List<Dragon> dragonesMayorVida = new ArrayList<>();
+            int vidaMin = 500;
+            
+            for(Dragon dragon : dragones){
+                
+                int vida = dragon.getVida();
+                
+                if(vida >= vidaMin){
+                    
+                    dragonesMayorVida.add(dragon);
+                }
+            }
+            
+            return dragonesMayorVida;
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
