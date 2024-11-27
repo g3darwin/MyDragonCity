@@ -117,6 +117,25 @@ public class Habitat{
             this.dragones.add(dragon);
         }
         
+        public Dragon getMejorDragon(){
+            
+            Dragon mejorDragon = null;
+            int nivelMax = Integer.MIN_VALUE;
+            
+            for(Dragon dragon : dragones){
+                
+                int nivel = dragon.getNivel();
+                
+                if(nivel > nivelMax){
+                    
+                    mejorDragon = dragon;
+                    nivelMax = nivel;
+                }
+            }
+            
+            return mejorDragon;
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
