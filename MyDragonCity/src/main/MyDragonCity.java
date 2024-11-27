@@ -93,13 +93,19 @@ public class MyDragonCity {
         System.out.println(h2);
 
         */
-        
+        /*
         System.out.println(" ");
         System.out.println(h1.getMejorDragon());
         System.out.println(" ");
         System.out.println(h1.getDragonesMayorVida());
         System.out.println(" ");
         System.out.println(h2.getDragonesMayorVida());
+        */
+        
+        System.out.println(" ");
+        System.out.println("Hay algun dragon tipo tierra? " + h1.algunTipoTierra());
+        System.out.println("Hay algun dragon tipo tierra? " + h2.algunTipoTierra());
+        
         
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
         pantalla.setVisible(true);
