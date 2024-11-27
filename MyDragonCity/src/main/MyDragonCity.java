@@ -106,6 +106,10 @@ public class MyDragonCity {
         System.out.println("Hay algun dragon tipo tierra? " + h1.algunTipoTierra());
         System.out.println("Hay algun dragon tipo tierra? " + h2.algunTipoTierra());
         
+        System.out.println(" ");
+        System.out.println("Son todos los dragones tipo tierra? " + h1.todosTipoTierra());
+        System.out.println("Son todos los dragones tipo tierra? " + h2.todosTipoTierra());
+        
         
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
         pantalla.setVisible(true);

@@ -172,6 +172,24 @@ public class Habitat{
             return algun;
         }
         
+        public boolean todosTipoTierra(){
+            
+            boolean todos = true;
+            
+            for(Dragon dragon : dragones){
+                
+                TipoDragon tipoD = dragon.getTipo();
+                
+                if(tipoD != TipoDragon.TIERRA){
+                    
+                    todos = false;
+                    break;
+                }
+            }
+            
+            return todos;
+        }
+        
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
