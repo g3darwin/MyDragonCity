@@ -73,7 +73,7 @@ public class MyDragonCity {
         Habitat h1 = new Habitat();
         Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
         Habitat h3 = new Habitat(h1);
-        
+         
         System.out.println(h1);
         System.out.println(h2);
         System.out.println(h3);
