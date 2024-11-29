@@ -20,7 +20,7 @@ public class Habitat{
         public static int PRECIO = 100;
         public static int EXP_OBTENIDA = 100;
         public static int MAX_DRAGONES = 2;
-        public static String ICONO = "/img/habitat.png";
+        public static String ICONO = " ";
         
         private int precioCompra;
         private int experienciaObtenida;

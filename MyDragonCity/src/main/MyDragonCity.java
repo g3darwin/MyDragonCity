@@ -7,6 +7,7 @@ package main;
 import model.Dragon;
 import model.Habitat;
 import model.Jugador;
+import model.Tienda;
 import model.TipoDragon;
 import view.MainView;
 
@@ -101,6 +102,20 @@ public class MyDragonCity {
         System.out.println(" ");
         System.out.println(h2.getDragonesMayorVida());
         */
+        
+        Tienda tienda = new Tienda();
+        
+        System.out.println("Bienvenido a la Tienda de Dragones y Hábitats.");
+        tienda.mostrarDragones();
+        tienda.mostrarHabitats();
+        
+        // Comprar un dragón
+        j1.setOro(tienda.comprarDragon(1, j1.getOro()));
+        System.out.println("Tu saldo actual es: " + j1.getOro() + " monedas.");
+
+        // Comprar un hábitat
+        j1.setOro(tienda.comprarHabitat(2, j1.getOro()));
+        System.out.println("Tu saldo actual es: " + j1.getOro() + " monedas.");
         
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
         pantalla.setVisible(true);
