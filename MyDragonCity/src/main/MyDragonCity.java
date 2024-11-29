@@ -7,6 +7,7 @@ package main;
 import model.Dragon;
 import model.Habitat;
 import model.Jugador;
+import model.Tienda;
 import model.TipoDragon;
 import view.MainView;
 
@@ -18,16 +19,16 @@ public class MyDragonCity {
 
     public static void main(String[] args) {
         
-        Dragon d1 = new Dragon("Steve", 1, 100, 190, 158, 35, 5, 
+        Dragon d1 = new Dragon("Steve", 5, 100, 1000, 158, 35, 5, 
                                             "/img/dragones/Dragon tierra bebe.png",
                                             TipoDragon.TIERRA, null);
-        Dragon d2 = new Dragon("Loche", 1, 100, 190, 158, 35, 5, 
+        Dragon d2 = new Dragon("Loche", 10, 100, 500, 158, 35, 5, 
                                             "/img/dragones/Dragon_fuego.png",
                                             TipoDragon.FUEGO, null);
-        Dragon d3 = new Dragon("Dave", 1, 100, 190, 158, 35, 5, 
+        Dragon d3 = new Dragon("Dave", 6, 100, 120, 158, 35, 5, 
                                             "/img/dragones/Bebe-dragon-barro.png",
                                             TipoDragon.TIERRA, null);
-        Dragon d4 = new Dragon("Bitz", 1, 100, 190, 158, 35, 5, 
+        Dragon d4 = new Dragon("Bitz", 8, 100, 480, 158, 35, 5, 
                                             "/img/dragones/Flaming_Rock_Dragon.png",
                                             TipoDragon.FUEGO, null);
         
@@ -73,7 +74,7 @@ public class MyDragonCity {
         Habitat h1 = new Habitat();
         Habitat h2 = new Habitat(100, 100, 2, Habitat.ICONO, d2, TipoDragon.TIERRA);
         Habitat h3 = new Habitat(h1);
-        
+         
         System.out.println(h1);
         System.out.println(h2);
         System.out.println(h3);
@@ -93,6 +94,28 @@ public class MyDragonCity {
         System.out.println(h2);
 
         */
+        /*
+        System.out.println(" ");
+        System.out.println(h1.getMejorDragon());
+        System.out.println(" ");
+        System.out.println(h1.getDragonesMayorVida());
+        System.out.println(" ");
+        System.out.println(h2.getDragonesMayorVida());
+        */
+        
+        Tienda tienda = new Tienda();
+        
+        System.out.println("Bienvenido a la Tienda de Dragones y Hábitats.");
+        tienda.mostrarDragones();
+        tienda.mostrarHabitats();
+        
+        // Comprar un dragón
+        j1.setOro(tienda.comprarDragon(1, j1.getOro()));
+        System.out.println("Tu saldo actual es: " + j1.getOro() + " monedas.");
+
+        // Comprar un hábitat
+        j1.setOro(tienda.comprarHabitat(2, j1.getOro()));
+        System.out.println("Tu saldo actual es: " + j1.getOro() + " monedas.");
         
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
         pantalla.setVisible(true);
