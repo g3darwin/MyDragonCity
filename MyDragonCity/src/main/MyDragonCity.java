@@ -5,10 +5,12 @@
 package main;
 
 import model.Dragon;
+import model.DragonTierra;
 import model.Habitat;
 import model.Jugador;
 import model.Tienda;
 import model.TipoDragon;
+import view.FormularioDragon;
 import view.MainView;
 
 /**
@@ -117,7 +119,18 @@ public class MyDragonCity {
         j1.setOro(tienda.comprarHabitat(2, j1.getOro()));
         System.out.println("Tu saldo actual es: " + j1.getOro() + " monedas.");
         
+        DragonTierra dragonT1 = new DragonTierra();
+        
+        d1.alimentarDragon();
+        
+        dragonT1.alimentarDragon();
+        
+        /*
         MainView pantalla = new MainView(h2.getDragones(), h1.getDragones());
+        pantalla.setVisible(true);
+        */
+        
+        FormularioDragon pantalla = new FormularioDragon();
         pantalla.setVisible(true);
     }
 }

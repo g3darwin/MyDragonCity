@@ -55,6 +55,17 @@ public class Dragon{
             this.habitat = habitat;
         }
         
+        public Dragon(String nombre, int nivel, int vida, int danio, int comida){
+                        
+            
+            this.nombre = nombre;
+            this.nivel = nivel;
+            this.vida = vida;
+            this.danio = danio;
+            this.comida = comida;
+          
+        }
+        
         public Dragon(Dragon otro){
             
             this(otro.nombre, otro.nivel, otro.precio, otro.vida, otro.danio,
@@ -66,7 +77,7 @@ public class Dragon{
             this( NOMBRE, NIVEL, PRECIO, VIDA, DANIO, 
                     VELOCIDAD, COMIDA, ICONO, null, null);
         }
-        
+       
         //-----------------------------------------------------------------
         // Getters & Setters
         //-----------------------------------------------------------------
@@ -174,7 +185,7 @@ public class Dragon{
         //-----------------------------------------------------------------
         // Overriden
         //-----------------------------------------------------------------
-        
+        /*
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
@@ -192,5 +203,42 @@ public class Dragon{
             sb.append('}');
             return sb.toString();
         }
+        */
         
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Dragon{");
+            sb.append("nombre=").append(nombre);
+            sb.append(", nivel=").append(nivel);
+            sb.append(", vida=").append(vida);
+            sb.append(", danio=").append(danio);
+            sb.append(", comida=").append(comida);
+            return sb.toString();
+        }
+        //-----------------------------------------------------------------
+        // Métodos
+        //-----------------------------------------------------------------
+        
+        public void alimentarDragon(){
+            
+            Jugador jugador = new Jugador();
+            
+            if(jugador.getComida() > 0){
+                
+                int comida = 50;
+                int restaComida = jugador.getComida() - comida;
+                jugador.setComida(restaComida);
+                
+                int nuevaComida = this.getComida() + comida;
+                this.setComida(nuevaComida);
+                
+                System.out.println("\nDragon alimentado");
+                
+            }else{
+                
+                System.out.println("\nEl jugador no tiene suficiente comida");
+            }
+            
+        }
     }
